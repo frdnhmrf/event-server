@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express();
 
-router.get('/categories', (req, res)=> {
-    res.status(200).json({
-        message: "Halaman categories",
-    });
-});
+const {create, index, find, update, destroy} = require('./controller');
+
+router.get('/categories', index);
+router.get('/categories/:id', find);
+router.post('/categories', create);
+router.put('/categories/:id', update);
+router.delete('/categories/:id', destroy);
 
 
 module.exports = router;
